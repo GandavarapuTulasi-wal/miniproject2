@@ -1,0 +1,7 @@
+1) create a shopping cart application. You will use bootstrap for layout,buttons and styles.
+	YOu will have to show a product with name in a article tag.diference products will have differnt prices.
+	Then you will show name of product and price inside the div tag.inside the div tag, you will create a button with name "Add to Cart" . on clicking button, you will change the button textContent from "Add to Cart" to "Remove from Cart".
+	you have to show 4 products in a row. 
+	total you have to show 8 products with names like tshirt, jeans, belts and so on. 
+	use proper css to make page attractive. 
+2) ON clicking "Add To Carr" you have to create an object of product with name,and price. you have to add product object to an array called products_cart. Then you have to store that array in local storage.

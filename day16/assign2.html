@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <script src="jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8">
+    <meta name="viewport" content="width=device-width">
+</head>
+<style>
+    .card {
+
+        background-color: rgb(204, 184, 184);
+    }
+
+    .paragraph {
+        margin-left: 30px;
+    }
+
+    .product-1 {
+        font-weight: 600;
+    }
+
+    .heading {
+        background-color: rgb(25, 25, 71);
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    i {
+        font-size: 30px;
+        color: #ffffff;
+    }
+
+    .payment {
+        background-color: #ffffff;
+
+    }
+
+    p {
+        font-size: 20px;
+
+    }
+
+    .price {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="card">
+        <h1 class="heading mb-4"> <a href="assign1.html"><i class="fas fa-chevron-left mr-4"></i></a>Cart</h1>
+        <div class="container">
+
+            <div class="row"></div>
+
+            <div id="cart">
+
+            </div>
+
+            <div id="totalProduct">
+                <p>Price Details</h1>
+                <p class="product-1">Total Product price:<span class="paragraph">$</span><span id="total">0</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="payment d-flex">
+        <p id="price" class="m-3"></p>
+        <button class="btn btn-success button ml-auto m-3">Payment Details</button>
+
+    </div>
+
+    <script>
+        let cartEl = document.getElementById("cart")
+        let sum = 0
+        let priceEl = document.getElementById("price")
+        let cartContainerEl = document.getElementById("cartContainer")
+        let productsArrayInLocal = JSON.parse(localStorage.getItem("productAddToCart"))
+
+        for (let i in productsArrayInLocal) {
+            let cardContainer = document.createElement("div")
+            cardContainer.classList.add("d-flex", "row", "mb-4", "shadow")
+
+            cardContainer.style.backgroundColor = "#ffffff"
+            cardContainer.style.borderRadius = "15px"
+
+
+
+            let card1 = document.createElement("div")
+            let card2 = document.createElement("div")
+            let card3 = document.createElement("div")
+
+            card1.style.width = "300px"
+            card1.classList.add("col-4")
+
+            card2.classList.add("d-flex", "flex-column", "justify-content-center", "align-items-center", "col-4")
+
+            let para = document.createElement("p")
+            para.textContent = productsArrayInLocal[i]["name"]
+            let parat = document.createElement("p")
+            parat.textContent = productsArrayInLocal[i]["price"]
+            let parath = document.createElement("img")
+            parath.classList.add("w-100")
+
+            parath.style.height = "250px"
+            let imageSrc = productsArrayInLocal[i]["image"]
+            parath.src = imageSrc
+            let imageval = document.createElement("img")
+            imageval.src = "discount.jpg"
+            imageval.style.width = "50%"
+
+            card3.appendChild(imageval)
+            card3.classList.add("col-4", "d-flex", "flex-column", "justify-content-center", "align-items-center")
+
+            card2.appendChild(para)
+            card2.appendChild(parat)
+            card1.appendChild(parath)
+            cardContainer.appendChild(card1)
+            cardContainer.appendChild(card2)
+            cardContainer.appendChild(card3)
+            cartEl.appendChild(cardContainer)
+
+
+            sum = sum + parseInt(parat.textContent)
+
+        }
+        let totalEl = document.getElementById("total")
+        totalEl.textContent = sum
+        priceEl.textContent = `$ ${sum}`
+
+
+    </script>
+</body>
+
+</html>
